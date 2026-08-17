@@ -4,7 +4,7 @@ from langchain_groq import ChatGroq
 from langchain.prompts import PromptTemplate
 from langchain.agents import create_react_agent
 from langchain.agents import AgentExecutor
-from App import criar_ferramentas
+from ferramentas import criar_ferramentas
 import os
 
 # Inicia o app
