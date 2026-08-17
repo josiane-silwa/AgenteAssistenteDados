@@ -36,3 +36,14 @@ if arquivo_carregado:
     st.success("Arquivo carregado com sucesso!")
     st.markdown("### 🔍 Primeiras linhas do DataFrame")
     st.dataframe(df.head())
+
+    # LLM
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+    llm = ChatGroq(
+        api_key=GROQ_API_KEY,
+        model_name="llama-3.3-70b-versatile",
+        temperature=0
+    )
+
+    # Ferramentas
+    tools = criar_ferramentas(df)
