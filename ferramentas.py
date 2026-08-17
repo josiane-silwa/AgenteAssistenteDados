@@ -47,3 +47,41 @@ if arquivo_carregado:
 
     # Ferramentas
     tools = criar_ferramentas(df)
+
+    # Prompt react
+    df_head = df.head().to_markdown()
+
+    prompt_react_pt = PromptTemplate(
+        input_variables=["input", "agent_scratchpad", "tools", "tool_names"],
+        partial_variables={"df_head": df_head},
+        template="""
+        Você é um assistente que sempre responde em português.
+
+        Você tem acesso a um dataframe pandas chamado `df`.
+        Aqui estão as primeiras linhas do DataFrame, obtidas com `df.head().to_markdown()`:
+
+        {df_head}
+
+        Responda às seguintes perguntas da melhor forma possível.
+
+        Para isso, você tem acesso às seguintes ferramentas:
+
+        {tools}
+
+        Use o seguinte formato:
+
+        Question: a pergunta de entrada que você deve responder  
+        Thought: você deve sempre pensar no que fazer  
+        Action: a ação a ser tomada, deve ser uma das [{tool_names}]  
+        Action Input: a entrada para a ação  
+        Observation: o resultado da ação  
+        ... (este Thought/Action/Action Input/Observation pode se repetir N vezes)
+        Thought: Agora eu sei a resposta final  
+        Final Answer: a resposta final para a pergunta de entrada original.
+        Quando usar a ferramenta_python: formate sua resposta final de forma clara, em lista, com valores separados por vírgulas e duas casas decimais sempre que apresentar números.
+
+        Comece!
+
+        Question: {input}  
+        Thought: {agent_scratchpad}"""
+    )
