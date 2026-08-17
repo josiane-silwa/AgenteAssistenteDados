@@ -85,3 +85,10 @@ if arquivo_carregado:
         Question: {input}  
         Thought: {agent_scratchpad}"""
     )
+
+    # Agente
+    agente = create_react_agent(llm=llm, tools=tools, prompt=prompt_react_pt)
+    orquestrador = AgentExecutor(agent=agente,
+                                tools=tools,
+                                verbose=True,
+                                handle_parsing_errors=True)
