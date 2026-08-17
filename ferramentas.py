@@ -113,3 +113,21 @@ if arquivo_carregado:
                 file_name="relatorio_informacoes_gerais.md",
                 mime="text/markdown"
             )
+
+    # Relatório de estatísticas descritivas
+    if st.button("📄 Relatório de estatísticas descritivas", key="botao_relatorio_estatisticas"):
+        with st.spinner("Gerando relatório 🦜"):
+            resposta = orquestrador.invoke({"input": "Quero um relatório de estatísticas descritivas"})
+            st.session_state['relatorio_estatisticas'] = resposta["output"]
+
+    # Exibe o relatório salvo com opção de download
+    if 'relatorio_estatisticas' in st.session_state:
+        with st.expander("Resultado: Relatório de estatísticas descritivas"):
+            st.markdown(st.session_state['relatorio_estatisticas'])
+
+            st.download_button(
+                label="📥 Baixar relatório",
+                data=st.session_state['relatorio_estatisticas'],
+                file_name="relatorio_estatisticas_descritivas.md",
+                mime="text/markdown"  # <- use mime correto
+            )
