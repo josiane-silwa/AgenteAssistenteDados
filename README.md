@@ -29,8 +29,15 @@ Projeto desenvolvido para o Challenge Alura Agente - do programa ONE IA TECH BUI
     seaborn==0.13.2
     python-dotenv==1.0.1
 
-## 📐 Estrutura
-
+## 🏗️📐 Arquitetura
+AgenteAssistenteDados/
+├── documentos/
+│   └── daods.csv/     # Dataframe de dados
+├── App.py             # Interface de chat (Streamlit)
+├── ferramentas.py     # Construção das ferramentas - Orquestração - Geração de respostas
+├── requirements.txt
+├── README.md
+└── .env
 
 ## 📦 Instalação
 Siga os passos abaixo para rodar o projeto localmente:
