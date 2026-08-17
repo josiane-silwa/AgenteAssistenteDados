@@ -92,3 +92,24 @@ if arquivo_carregado:
                                 tools=tools,
                                 verbose=True,
                                 handle_parsing_errors=True)
+    # AÇÕES RÁPIDAS
+    st.markdown("---")
+    st.markdown("## ⚡ Ações rápidas")
+
+    # Relatório de informações gerais
+    if st.button("📄 Relatório de informações gerais", key="botao_relatorio_geral"):
+        with st.spinner("Gerando relatório 🦜"):
+            resposta = orquestrador.invoke({"input": "Quero um relatório com informações sobre os dados"})
+            st.session_state['relatorio_geral'] = resposta["output"]
+
+    # Exibe o relatório com botão de download
+    if 'relatorio_geral' in st.session_state:
+        with st.expander("Resultado: Relatório de informações gerais"):
+            st.markdown(st.session_state['relatorio_geral'])
+
+            st.download_button(
+                label="📥 Baixar relatório",
+                data=st.session_state['relatorio_geral'],
+                file_name="relatorio_informacoes_gerais.md",
+                mime="text/markdown"
+            )
