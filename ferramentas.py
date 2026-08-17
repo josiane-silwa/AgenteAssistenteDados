@@ -131,3 +131,12 @@ if arquivo_carregado:
                 file_name="relatorio_estatisticas_descritivas.md",
                 mime="text/markdown"  # <- use mime correto
             )
+
+    # PERGUNTA SOBRE OS DADOS
+    st.markdown("---")
+    st.markdown("## 🔎 Perguntas sobre os dados")
+    pergunta_sobre_dados = st.text_input("Faça uma pergunta sobre os dados (ex: 'Qual é a média do tempo de entrega?')")
+    if st.button("Responder pergunta", key="responder_pergunta_dados"):
+        with st.spinner("Analisando os dados 🦜"):
+            resposta = orquestrador.invoke({"input": pergunta_sobre_dados})
+            st.markdown((resposta["output"]))
