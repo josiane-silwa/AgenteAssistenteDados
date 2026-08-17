@@ -201,3 +201,45 @@ def gerar_grafico(pergunta: str, df: pd.DataFrame) -> str:
     st.pyplot(fig)
         
     return "" 
+
+# Definindo as ferramentas
+def criar_ferramentas(df):
+    ferramenta_informacoes_dataframe = Tool(
+        name="Informações Dataframe",
+        func=lambda pergunta:informacoes_dataframe.run({"pergunta": pergunta, "df": df}),
+        description="""Utilize esta ferramenta sempre que o usuário solicitar informações gerais sobre o dataframe,
+        incluindo número de colunas e linhas, nomes das colunas e seus tipos de dados, contagem de dados
+        nulos e duplicados para dar um panomara geral sobre o arquivo.""",
+        return_direct=True) # Para exibir o relatório gerado pela função
+
+    ferramenta_resumo_estatistico = Tool(
+        name="Resumo Estatístico",
+        func=lambda pergunta:resumo_estatistico.run({"pergunta": pergunta, "df": df}),
+        description="""Utilize esta ferramenta sempre que o usuário solicitar um resumo estatístico completo e descritivo da base de dados,
+        incluindo várias estatísticas (média, desvio padrão, mínimo, máximo etc.) e/ou múltiplas colunas numéricas.
+        Não utilize esta ferramenta para calcular uma única métrica como 'qual é a média de X' ou 'qual a correlação das variáveis'.
+        Para isso, use a ferramenta_python.""",
+        return_direct=True) # Para exibir o relatório gerado pela função
+
+    ferramenta_gerar_grafico = Tool(
+        name="Gerar Gráfico",
+        func=lambda pergunta:gerar_grafico.run({"pergunta": pergunta, "df": df}),
+        description="""Utilize esta ferramenta sempre que o usuário solicitar um gráfico a partir de um DataFrame pandas (`df`) com base em uma instrução do usuário.
+        A instrução pode conter pedidos como: 'Crie um gráfico da média de tempo de entrega por clima','Plote a distribuição do tempo de entrega'"
+        ou "Plote a relação entre a classificação dos agentes e o tempo de entrega. Palavras-chave comuns que indicam o uso desta ferramenta incluem:
+        'crie um gráfico', 'plote', 'visualize', 'faça um gráfico de', 'mostre a distribuição', 'represente graficamente', entre outros.""",
+        return_direct=True)
+    
+    ferramenta_codigos_python = Tool(
+        name="Códigos Python",
+        func=PythonAstREPLTool(locals={"df": df}),
+        description="""Utilize esta ferramenta sempre que o usuário solicitar cálculos, consultas ou transformações específicas usando Python diretamente sobre o DataFrame `df`.
+        Exemplos de uso incluem: "Qual é a média da coluna X?", "Quais são os valores únicos da coluna Y?", "Qual a correlação entre A e B?". 
+        Evite utilizar esta ferramenta para solicitações mais amplas ou descritivas, como informações gerais sobre o dataframe, resumos estatísticos completos ou geração de gráficos — nesses casos, use as ferramentas apropriadas.""")
+
+    return [
+        ferramenta_informacoes_dataframe, 
+        ferramenta_resumo_estatistico, 
+        ferramenta_gerar_grafico,
+        ferramenta_codigos_python
+    ]
