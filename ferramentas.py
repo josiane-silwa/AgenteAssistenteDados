@@ -26,3 +26,7 @@ Faça o upload de um arquivo CSV e você poderá:
 
 Ideal para analistas, cientistas de dados e equipes que buscam agilidade e insights rápidos com apoio de IA.
 """)
+
+# Upload do CSV
+st.markdown("### 📁 Faça upload do seu arquivo CSV")
+arquivo_carregado = st.file_uploader("Selecione um arquivo CSV", type="csv", label_visibility="collapsed")
