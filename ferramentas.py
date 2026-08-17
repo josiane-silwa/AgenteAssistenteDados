@@ -10,3 +10,14 @@ import seaborn as sns
 import streamlit as st
 from langchain.agents import Tool
 from langchain_experimental.tools import PythonAstREPLTool
+
+# Obtendo chave da api
+load_dotenv()
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+# Configurações do llm
+llm = ChatGroq(
+    api_key=GROQ_API_KEY,
+    model_name="llama-3.3-70b-versatile",
+    temperature=0
+)
