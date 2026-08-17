@@ -140,3 +140,13 @@ if arquivo_carregado:
         with st.spinner("Analisando os dados 🦜"):
             resposta = orquestrador.invoke({"input": pergunta_sobre_dados})
             st.markdown((resposta["output"]))
+
+
+    # GERAÇÃO DE GRÁFICOS
+    st.markdown("---")
+    st.markdown("## 📊 Criar gráfico com base em uma pergunta")
+
+    pergunta_grafico = st.text_input("Digite o que deseja visualizar (ex: 'Crie um gráfico da média de tempo de entrega por clima.')")
+    if st.button("Gerar gráfico", key="gerar_grafico"):
+        with st.spinner("Gerando o gráfico 🦜"):
+            orquestrador.invoke({"input": pergunta_grafico})
