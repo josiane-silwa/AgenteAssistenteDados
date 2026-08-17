@@ -129,3 +129,75 @@ def resumo_estatistico(pergunta: str, df: pd.DataFrame) -> str:
     resposta = cadeia.invoke({"pergunta": pergunta, "resumo": estatisticas})
 
     return resposta
+
+# Ferramenta para gerar gráficos
+@tool
+def gerar_grafico(pergunta: str, df: pd.DataFrame) -> str:
+    """
+    Utilize esta ferramenta sempre que o usuário solicitar um gráfico a partir de um DataFrame pandas (`df`) com base em uma instrução do usuário.
+    A instrução pode conter pedidos como: 'Crie um gráfico da média de tempo de entrega por clima','Plote a distribuição do tempo de entrega'"
+    ou "Plote a relação entre a classifição dos agentes e o tempo de entrega. Palavras-chave comuns que indicam o uso desta ferramenta incluem:
+    'crie um gráfico', 'plote', 'visualize', 'faça um gráfico de', 'mostre a distribuição', 'represente graficamente', entre outros."""
+
+ # Captura informações sobre o dataframe
+    colunas_info = "\n".join([f"- {col} ({dtype})" for col, dtype in df.dtypes.items()])
+    amostra_dados = df.head(3).to_dict(orient='records')
+
+  # Template otimizado para geração de código de gráficos
+    template_resposta = PromptTemplate(
+            template="""
+            Você é um especialista em visualização de dados. Sua tarefa é gerar **apenas o código Python** para plotar um gráfico com base na solicitação do usuário.
+
+            ## Solicitação do usuário:
+            "{pergunta}"
+
+            ## Metadados do DataFrame:
+            {colunas}
+
+            ## Amostra dos dados (3 primeiras linhas):
+            {amostra}
+
+            ## Instruções obrigatórias:
+            1. Use as bibliotecas `matplotlib.pyplot` (como `plt`) e `seaborn` (como `sns`).
+            2. Defina o tema com `sns.set_theme()`
+            3. Certifique-se de que todas as colunas mencionadas na solicitação existem no DataFrame chamado `df`.
+            4. Escolha o tipo de gráfico adequado conforme a análise solicitada:
+            - **Distribuição de variáveis numéricas**: `histplot`, `kdeplot`, `boxplot` ou `violinplot`
+            - **Distribuição de variáveis categóricas**: `countplot` 
+            - **Comparação entre categorias**: `barplot`
+            - **Relação entre variáveis**: `scatterplot` ou `lineplot`
+            - **Séries temporais**: `lineplot`, com o eixo X formatado como datas
+            5. Configure o tamanho do gráfico com `figsize=(8, 4)`.
+            6. Adicione título e rótulos (`labels`) apropriados aos eixos.
+            7. Posicione o título à esquerda com `loc='left'`, deixe o `pad=20` e use `fontsize=14`.
+            8. Mantenha os ticks eixo X sem rotação com `plt.xticks(rotation=0)`
+            9. Remova as bordas superior e direita do gráfico com `sns.despine()`.
+            10. Finalize o código com `plt.show()`.
+
+            Retorne APENAS o código Python, sem nenhum texto adicional ou explicação.
+
+            Código Python:
+            """, input_variables=["pergunta", "colunas", "amostra"]
+        )
+
+        # Gera o código
+    cadeia = template_resposta | llm | StrOutputParser()
+    codigo_bruto = cadeia.invoke({
+            "pergunta": pergunta,
+            "colunas": colunas_info,
+            "amostra": amostra_dados
+        })
+
+        # Limpa o código gerado
+    codigo_limpo = codigo_bruto.replace("```python", "").replace("```", "").strip()
+
+        # Tenta executar o código para validação
+    exec_globals = {'df': df, 'plt': plt, 'sns': sns}
+    exec_locals = {}
+    exec(codigo_limpo, exec_globals, exec_locals)
+
+        # Mostra o gráfico 
+    fig = plt.gcf()
+    st.pyplot(fig)
+        
+    return "" 
