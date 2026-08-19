@@ -1,10 +1,9 @@
-## Mini Kanban
-<img width="1915" height="1029" alt="banner agente assistente de dados" src="https://github.com/user-attachments/assets/801ae5f6-68df-44b9-87d4-657ff4c314ea" />
+## 🦜 Analysis - Assistente de análise de dados com IA
+<img width="1919" height="974" alt="Captura de tela 2026-08-19 171741" src="https://github.com/user-attachments/assets/6ed6c447-881b-4c80-bb8a-45795063d181" />
 
-Projeto de desenvolvimento pessoal para estudos de construção de agentes de IA.
 
 ## 📋 Descrição
-Projeto desenvolvido para o Challenge Alura Agente - do programa ONE IA TECH BUILDER. Que implementa uma aplicação Python, com a construção de um Agente de IA que responde perguntas de um colaborador da área de dados de uma empresa fictícia. Auxiliando-o na análise de dados.
+Projeto desenvolvido para o Challenge Alura Agente, do programa ONE AI - TECH AI BUILDER. Que implementa uma aplicação Python, com a construção de um Agente de IA que responde perguntas de um colaborador da área de dados de uma empresa fictícia. Auxiliando-o na análise dos dados.
 
 ## 🛠️ Tecnologias Utilizadas
 <div align="left">
@@ -12,7 +11,6 @@ Projeto desenvolvido para o Challenge Alura Agente - do programa ONE IA TECH BUI
 [![Minhas Habilidades](https://skillicons.dev/icons?i=python,git
 )](https://skillicons.dev) <img width="50" height="50" alt="LangChain-Logo" src="https://github.com/user-attachments/assets/7fbfe4ae-c187-4d3d-b862-a85a4197f124" />
 <img width="60" height="60" alt="streamlit-icon" src="https://github.com/user-attachments/assets/99fee66a-8d0b-496a-bfb6-e91fbc927889" />
-
 
   </div>
 
@@ -46,20 +44,20 @@ Siga os passos abaixo para rodar o projeto localmente:
       git clone https://github.com/jandsonrj/pokemon-ionic-app.git
 
     Acesse o diretório do projeto:
-     cd KanbanTaskBoard
+     cd AgenteAssistenteDados
 
     Instale as dependências:
-      npm install
+      pip install -r requirements.txt
 
     Inicie a aplicação:
-      Backend:  python .\manage.py runserver
-      Fontend: npm run dev
+      streamlit run .\App.py
     
-
-A aplicação será automaticamente aberta no seu navegador na porta: http://localhost:5173/
+A aplicação será automaticamente aberta no seu navegador na porta: http://localhost:8501/
 
 ## 📁 Acesso ao projeto
-<a href="https://kanbantaskboard-frontend.onrender.com" target="_blank"><span>Clique aqui</span></a> para ver uma demonstração do projeto rodando no Render.
+<a href="https://kanbantaskboard-frontend.onrender.com" target="_blank"><span>Clique aqui</span></a> para ver uma demonstração do projeto rodando no Streamlit.
 
 
 ## 🔎❓Exemplos de consultas, perguntas e respostas
+Para iniciarmos o agente, devemos fazer o upload do arquivo dados_entregas_modificado.csv
+<img width="1919" height="974" alt="Captura de tela 2026-08-19 171741" src="https://github.com/user-attachments/assets/0a1dc5d7-678d-4c5a-902c-66355d62a28a" />
