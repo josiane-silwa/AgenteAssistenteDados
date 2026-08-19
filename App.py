@@ -8,7 +8,7 @@ from ferramentas import criar_ferramentas
 import os
 
 # Inicia o app
-st.set_page_config(page_title="Agente Assistente de Dados", layout="centered")
+st.set_page_config(page_title="Analysis", layout="centered")
 st.title("🦜 Agente Assistente de análise de dados")
 
 # Descrição da ferramenta
