@@ -30,15 +30,15 @@ Projeto desenvolvido para o Challenge Alura Agente - do programa ONE IA TECH BUI
     python-dotenv==1.0.1
 
 ## 🏗️📐 Arquitetura
-AgenteAssistenteDados/
-├── documentos/
-│   └── daods.csv/     # Dataframe de dados
-├── App.py             # Interface de chat (Streamlit)
-├── ferramentas.py     # Construção das ferramentas - Orquestração - Geração de respostas
-├── requirements.txt
-├── README.md
-└── .env
-
+    AgenteAssistenteDados/
+    ├── documentos/
+    │   └── dados_entrega_modificado.csv     # Dataframe de dados
+    ├── App.py                               # Interface de chat (Streamlit)
+    ├── ferramentas.py                       # Construção das ferramentas - Orquestração - Geração de respostas
+    ├── requirements.txt
+    ├── README.md
+    └── .env
+    
 ## 📦 Instalação
 Siga os passos abaixo para rodar o projeto localmente:
 
