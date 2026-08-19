@@ -41,7 +41,7 @@ Projeto desenvolvido para o Challenge Alura Agente, do programa ONE AI - TECH AI
 Siga os passos abaixo para rodar o projeto localmente:
 
     Clone o repositório:
-      git clone https://github.com/jandsonrj/pokemon-ionic-app.git
+      git clone https://github.com/josiane-silwa/AgenteAssistenteDados.git
 
     Acesse o diretório do projeto:
      cd AgenteAssistenteDados
