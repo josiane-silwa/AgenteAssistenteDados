@@ -9,8 +9,7 @@ import os
 
 # Inicia o app
 st.set_page_config(page_title="Analysis", layout="centered")
-st.title("🦜 Analysis " \
-"Agente Assistente de análise de dados")
+st.title("🦜 Analysis - Assistente de análise de dados com IA")
 
 # Descrição da ferramenta
 st.info("""
