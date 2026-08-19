@@ -64,6 +64,8 @@ Para iniciarmos o agente, devemos fazer o upload do arquivo dados_entregas_modif
 <br>
 <img width="1919" height="974" alt="Captura de tela 2026-08-19 171741" src="https://github.com/user-attachments/assets/0a1dc5d7-678d-4c5a-902c-66355d62a28a" />
 <img width="1919" height="967" alt="Captura de tela 2026-08-19 192951" src="https://github.com/user-attachments/assets/31c87d0b-358b-446c-a665-d221a6df5739" />
+<img width="1915" height="1024" alt="Captura de tela 2026-08-17 024906" src="https://github.com/user-attachments/assets/a348fd74-65cd-495f-849d-6138df851907" />
+
 <img width="1916" height="1037" alt="Captura de tela 2026-08-17 025014" src="https://github.com/user-attachments/assets/dd4fd4d9-7f15-49dd-b58d-2f34e5a1f2cc" />
 <img width="1919" height="1027" alt="Captura de tela 2026-08-17 025047" src="https://github.com/user-attachments/assets/cf1a4f36-0afb-4c57-ab7c-fc2fc96949f4" />
 <br><br>
